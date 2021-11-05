@@ -1,62 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello.</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Title</title>
+</head>
+<body>
 
-    <script src="./dist/bundle.js" defer></script>
-
-    <style>
-      :root {
-        font-family: Helvetica, sans-serif;
-        font-size: 20px;
-        --blur: 100;
-        --opacity: 0;
-      }
-
-      body {
-        padding: 0;
-        margin: 0;
-      }
-
-      .container {
-        height: 300vh;
-      }
-
-      .sticky {
-        font-size: 10rem;
-        font-weight: bold;
-        letter-spacing: -0.03em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        position: sticky;
-        top: 0;
-        font-size: calc(var(--size) * 1em);
-      }
-
-      span {
-        opacity: var(--opacity);
-      }
-    </style>
-  </head>
-  <body>
-    <div
-      class="container"
-      tg-name="size"
-      tg-edge="inset"
-      tg-from="14"
-      tg-to="20"
-      tg-bezier="0.23, 1.5, 0.32, 2"
-    >
-      <div class="container" tg-name="opacity" tg-from="0" tg-to="1">
-        <div class="sticky">
-          <span>Hello.</span>
-        </div>
+<div class="wrapper">
+  <div class="title">
+    <h1>Hello World</h1>
+  </div>
+  <div class="phone" style="background:#fffddd;">
+    <img tg-name="opacity" tg-from="0" tg-to="1" tg-edge="content" class="people"
+         src="https://www.apple.com.cn/iphone-13-pro/images/overview/display/gaming_static__d9cz1nu6j0ia_large.jpg">
+  </div>
+  <div class="camera sticky-wrap">
+    <div class="apple-wrap" tg-name="opacity" tg-edge="inset">
+      <div>
+        <h1>原深感摄像头系统，</h1>
+        <h1>同样 Pro 到牙齿：</h1>
+      </div>
+      <div>
+        <ul class="feature">
+          <li>电影效果模式</li>
+          <li>摄影风格</li>
+          <li>ProRes 视频拍摄</li>
+          <li>杜比视界 HDR 视频拍摄</li>
+          <li>人像模式</li>
+          <li>夜间模式自拍</li>
+          <li>智能 HDR 4</li>
+          <li>深度融合技术</li>
+          <li>(此处省略一万字)</li>
+        </ul>
       </div>
     </div>
-  </body>
+
+  </div>
+  <div class="phone">
+    <img tg-name="opacity" tg-from="0" tg-to="1" tg-edge="content" class="people"
+         src="https://www.apple.com.cn/iphone-13-pro/images/overview/display/gaming_static__d9cz1nu6j0ia_large.jpg">
+  </div>
+  <div class="title">
+    <h1>Hello World</h1>
+  </div>
+  <div class="title">
+    <h1>Hello World</h1>
+  </div>
+  <div class="title">
+    <h1>Hello World</h1>
+  </div>
+</div>
+
+</body>
 </html>
+<style>
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .feature li {
+    list-style-type: none;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .015em;
+    color: #6e6e73;
+  }
+
+  .apple-wrap {
+    opacity: var(--opacity);
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  .camera {
+    height: 100vh;
+    display: flex;
+    width: 100%;
+  }
+
+  .title {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+ 
+  .sticky-wrap {
+    position: sticky;
+    top: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fbfbfd;
+  }
+
+  .phone {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .people {
+    opacity: var(--opacity);
+  }
+
+</style>
+<script src="./dist/bundle.js"></script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <div>
+        <h1>原深感摄像头系统，</h1>
+        <h1>同样 Pro 到牙齿：</h1>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="content" tg-name="opacity" tg-edge="inset">
+        <h1 class="s1">拍摄、&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+        <h1 class="s2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;剪辑、</h1>
+        <h1 class="s3">分享。&nbsp;&nbsp;&nbsp;</h1>
+    </div>
+</div>
+</body>
+</html>
+<style>
+    h1 {
+        font-size: 86px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper {
+        height: 100vh;
+    }
+    .content {
+        margin-top: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .content .s1 {
+        transform: matrix(1, 0, 0, 1, calc(var(--opacity) * 100), 0);
+    }
+    .content .s2 {
+        transform: matrix(1, 0, 0, 1, calc(var(--opacity) * -170), 0);
+    }
+    .content .s3 {
+        transform: matrix(1, 0, 0, 1, calc(var(--opacity) * 60), 0);
+    }
+</style>
+<script src="./dist/bundle.js"></script>

@@ -11,7 +11,7 @@ import { easePercentage as ease } from './ease';
  * caching those values into an object for ease of use in scroll event.
  */
 export function parseAttributes(element: HTMLElement): TgElement {
-  const prefix = getPrefix()
+  const prefix = getPrefix();
   const follow: HTMLElement = extractValues(element, `${prefix}follow`);
 
   const actualElement = follow || element;
@@ -102,20 +102,28 @@ export function parseValues(elements: TgElement[]) {
     if (name === '--_') {
       return;
     }
-
-    // edge is 'cover' by default
-    let percentage =
-      edge === 'cover'
-        ? Math.min(
-            Math.max(
-              (scrolled + clientHeight - top) / (clientHeight + height),
-              0
-            ),
-            1
-          )
-        : Math.min(Math.max((scrolled - top) / (height - clientHeight), 0), 1);
-
-    
+    let percentage;
+    if (edge === 'content') {
+      percentage = Math.min(
+        Math.max((scrolled + clientHeight - top) / height, 0),
+        1
+      );
+    } else {
+      // edge is 'cover' by default
+      percentage =
+        edge === 'cover'
+          ? Math.min(
+              Math.max(
+                (scrolled + clientHeight - top) / (clientHeight + height),
+                0
+              ),
+              1
+            )
+          : Math.min(
+              Math.max((scrolled - top) / (height - clientHeight), 0),
+              1
+            );
+    }
 
     // Calculation result value of bezier
     percentage = bezier ? ease(bezier, percentage) : percentage;
@@ -155,7 +163,7 @@ export function parseValues(elements: TgElement[]) {
       );
 
       element.lastValue = value;
-      console.log('value', element, value);
+      //console.log('value', element, value);
     }
   });
 }
