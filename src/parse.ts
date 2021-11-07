@@ -25,6 +25,7 @@ export function parseAttributes(element: HTMLElement): TgElement {
   const to: number = extractValues(actualElement, `${prefix}to`);
   const steps: number = extractValues(actualElement, `${prefix}steps`);
   const step: number = extractValues(actualElement, `${prefix}step`);
+  const matrix: number = extractValues(actualElement, `${prefix}matrix`);
   const bezier: string | Array<number> = extractValues(
     actualElement,
     `${prefix}bezier`
@@ -67,6 +68,7 @@ export function parseAttributes(element: HTMLElement): TgElement {
     multiplier,
     lastValue: null,
     bezier,
+    matrix
   };
 }
 
@@ -96,35 +98,55 @@ export function parseValues(elements: TgElement[]) {
       edge,
       lastValue,
       bezier,
+      matrix,
     } = element;
 
     // If the name is equal to '_' (--_), skip
     if (name === '--_') {
       return;
     }
+
+    console.log("scrolled: " + scrolled);
+    console.log("top: " + top);
+    console.log("height: " + height);
+    console.log("clientHeight: " + clientHeight);
+    console.log("matrix: " + matrix);
+    let distance = top % clientHeight;
+    console.log("distance: " + distance)
+    //Math.min(Math.max((scrolled  - height - distance - 100) / height, 0), 1);
     let percentage;
-    if (edge === 'content') {
+    // edge is 'cover' by default
+    if (edge === 'cover') {
       percentage = Math.min(
-        Math.max((scrolled + clientHeight - top) / height, 0),
-        1
+          Math.max((scrolled + clientHeight - top) / (clientHeight + height),
+              0
+          ),
+          1
+      );
+    } else if (edge === 'inset') {
+      percentage = Math.min(
+          Math.max((scrolled - top) / (height - clientHeight), 0),
+          1
+      );
+    } else if (edge === 'content') {
+      percentage = Math.min(
+          Math.max((scrolled + clientHeight - top) / height, 0),
+          1
+      );
+    } else if (edge === 'matrix') {
+      percentage = Math.min(
+          Math.max((scrolled + clientHeight - top - matrix) / height, 0),
+          1
       );
     } else {
-      // edge is 'cover' by default
-      percentage =
-        edge === 'cover'
-          ? Math.min(
-              Math.max(
-                (scrolled + clientHeight - top) / (clientHeight + height),
-                0
-              ),
-              1
-            )
-          : Math.min(
-              Math.max((scrolled - top) / (height - clientHeight), 0),
-              1
-            );
+      // undefined. handle according to 'cover'
+      percentage = Math.min(
+          Math.max((scrolled + clientHeight - top) / (clientHeight + height),
+              0
+          ),
+          1
+      );
     }
-
     // Calculation result value of bezier
     percentage = bezier ? ease(bezier, percentage) : percentage;
 

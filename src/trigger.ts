@@ -4,6 +4,7 @@ import observer from './observer';
 import bind from './bind';
 
 import { TgElement, Trigger as TriggerType } from './type';
+import {extractValues} from "./directives";
 
 let activeElements: TgElement[] = []; // Store the elements observed by IntersectionObserver
 let ob: IntersectionObserver | null = null; // Store the observer instance
@@ -19,9 +20,13 @@ function observeElements() {
   ob = observer((entries) => {
     entries.forEach((entry) => {
       let { target } = entry;
-      if (entry.isIntersecting) {
+      const name: string = extractValues(target as HTMLElement, 'tg-edge');
+      if (entry.isIntersecting ) {
+        console.log("name: " + name);
+        console.log("isIntersecting");
         activeElements.push(parseAttributes(target as HTMLElement));
       } else {
+        console.log("not isIntersecting");
         // Remove element from array if not intersecting
         activeElements = activeElements.filter(function (obj) {
           return obj.el !== target;

@@ -5,31 +5,90 @@
     <title>Title</title>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" style="height: 100vh">
     <div>
         <h1>原深感摄像头系统，</h1>
         <h1>同样 Pro 到牙齿：</h1>
     </div>
 </div>
 <div class="wrapper">
-    <div class="content" tg-name="opacity" tg-edge="inset">
+   <!-- <div class="content" tg-name="opacity" tg-edge="inset" tg-bezier="ease">
         <h1 class="s1">拍摄、&nbsp;&nbsp;&nbsp;&nbsp;</h1>
         <h1 class="s2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;剪辑、</h1>
         <h1 class="s3">分享。&nbsp;&nbsp;&nbsp;</h1>
     </div>
+    <div style="height: 100px; background:indianred;"></div>
+    <div style="height: 360px; background:darkolivegreen;"></div>
+    <div>
+        <img tg-name="percentage" tg-edge="content" class="game" tg-bezier="ease"
+             src="https://www.apple.com.cn/iphone-13-pro/images/overview/5g/5g_3__cezwscnp7fo2_large_2x.jpg">
+    </div>
+    <div>
+        <p class="copy" tg-name="percentage" tg-edge="content" class="detail">
+            世界正迅速迈入 5G 时代。从在线享受流媒体到下载，一切都在大加速。5G 的速度，足以支持激烈的多人在线游戏、分享增强现实视频等需求。借助智能数据模式，iPhone 还会在不需要 5G 速度时自动降低网速。
+        </p>
+    </div>-->
+    <div style="display: flex;">
+        <div class="test test2" tg-name="percentage" tg-edge="matrix" tg-matrix="140">世界正迅速迈入 5G 时代。从在线享受流媒体到下载，一切都在大加速。5G 的速度，足以支</div>
+        <div class="test" style="margin-left: 50px;">
+            <div style="height: 140px; background: #000;"></div>
+        </div>
+    </div>
+    <div style="height: 200px; background:palevioletred;"></div>
+</div>
+<div class="wrapper" style="height: 100vh">
+    <div>
+        <h1>原深感摄像头系统，</h1>
+        <h1>同样 Pro 到牙齿：</h1>
+    </div>
+</div>
+<div class="wrapper" style="height: 100vh">
+
+</div>
+<div class="wrapper" style="height: 100vh">
+
 </div>
 </body>
 </html>
 <style>
+    .test2 {
+        opacity: var(--percentage);
+        transform: matrix(1, 0, 0, 1, 0, calc(140 - calc(140 * var(--percentage))));
+    }
+.test{
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+}
+    .copy {
+        margin: auto 0;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        width: 500px;
+        transform: matrix(1, 0, 0, 1, 0, calc(140 - calc(140 * var(--percentage))));
+    }
+    .detail {
+
+        opacity: var(--percentage);
+
+    }
+    .game {
+        display: block;
+        height: 450px;
+        margin: 0 auto;
+        margin-top: 50px;
+        transform: matrix(1, 0, 0, 1, 0, calc(140 - calc(140 * var(--percentage))));
+    }
     h1 {
         font-size: 86px;
     }
     * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
     .wrapper {
-        height: 100vh;
+        /*height: 100vh;*/
     }
     .content {
         margin-top: 200px;

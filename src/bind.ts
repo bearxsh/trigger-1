@@ -18,6 +18,7 @@ export default function (
     .querySelectorAll<HTMLElement>(`[${prefix}name]`)
     .forEach((element) => {
       const { top, height } = element.getBoundingClientRect();
+      console.log("执行element.getBoundingClientRect()")
 
       element.style.setProperty(`--${prefix}top`, `${top + window.scrollY}`);
       element.style.setProperty(`--${prefix}height`, `${height}`);

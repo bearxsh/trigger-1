@@ -25,7 +25,8 @@ export interface TgElement {
   decimals: number;
   multiplier: number;
   lastValue: string | number | null;
-  bezier: string | Array<number>
+  bezier: string | Array<number>;
+  matrix: number;
 }
 
 export interface Trigger {
