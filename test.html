@@ -27,13 +27,13 @@
              src="https://www.apple.com.cn/iphone-13-pro/images/overview/5g/5g_3__cezwscnp7fo2_large_2x.jpg">
     </div>
     <div>
-        <h4 class="hdr" tg-name="percentage" tg-edge="matrix" tg-matrix="50">智能 HDR 4<br>
+        <h4 class="hdr" tg-name="percentage" tg-edge="matrix" tg-matrix="150" tg-ref="hello">智能 HDR 4<br>
             对场景中的每个部分<br>
             进行优化。</h4>
     </div>
     <div style="display: flex;">
-        <div class="test test2" tg-name="percentage" tg-edge="matrix" tg-matrix="140">世界正迅速迈入 5G 时代。从在线享受流媒体到下载，一切都在大加速。5G 的速度，足以支</div>
-        <div class="test" style="margin-left: 50px;">
+        <div class="test test2" tg-name="percentage" tg-edge="matrix" tg-matrix="140" >世界正迅速迈入 5G 时代。从在线享受流媒体到下载，一切都在大加速。5G 的速度，足以支</div>
+        <div class="test" style="margin-left: 50px;" tg-follow="hello" tg-name="percentage">
             <div style="height: 140px; background: #000;"></div>
         </div>
     </div>
@@ -54,13 +54,16 @@
 </body>
 </html>
 <style>
+    .think {
+        opacity: var(--percentage);
+    }
     .hdr {
         margin-top: 50px;
         margin-left: 50px;
         font-size: 32px;
         line-height: 1.3636;
         letter-spacing: .001em;
-        transform: matrix(1, 0, 0, 1, 0, calc(50 - calc(50 * var(--percentage))));
+        transform: matrix(1, 0, 0, 1, 0, calc(150 - calc(150 * var(--percentage))));
         opacity: var(--percentage);
     }
     .test2 {
@@ -71,6 +74,7 @@
     width: 200px;
     height: 200px;
     border: 1px solid green;
+    opacity: var(--percentage);
 }
     .copy {
         margin: auto 0;

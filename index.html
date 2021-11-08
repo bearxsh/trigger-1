@@ -11,12 +11,8 @@
   <div class="title">
     <h1>Hello World</h1>
   </div>
-  <div class="phone" style="background:#fffddd;">
-    <img tg-name="opacity" tg-from="0" tg-to="1" tg-edge="content" class="people"
-         src="https://www.apple.com.cn/iphone-13-pro/images/overview/display/gaming_static__d9cz1nu6j0ia_large.jpg">
-  </div>
   <div class="camera sticky-wrap">
-    <div class="apple-wrap" tg-name="opacity" tg-edge="inset">
+    <div class="apple-wrap" tg-name="opacity" tg-edge="content" id="airtag">
       <div>
         <h1>原深感摄像头系统，</h1>
         <h1>同样 Pro 到牙齿：</h1>
@@ -35,10 +31,9 @@
         </ul>
       </div>
     </div>
-
   </div>
   <div class="phone">
-    <img tg-name="opacity" tg-from="0" tg-to="1" tg-edge="content" class="people"
+    <img tg-name="opacity" tg-edge="content" class="people" id="macbook"
          src="https://www.apple.com.cn/iphone-13-pro/images/overview/display/gaming_static__d9cz1nu6j0ia_large.jpg">
   </div>
   <div class="title">
@@ -82,6 +77,8 @@
     height: 100vh;
     display: flex;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .title {
@@ -103,7 +100,6 @@
   }
 
   .phone {
-    height: 100vh;
     display: flex;
     align-items: center;
   }
@@ -114,3 +110,12 @@
 
 </style>
 <script src="./dist/bundle.js"></script>
+<script>
+  document.querySelector('#macbook').addEventListener('tg', (e) => {
+    console.log(e.detail.value); // {value: '#666'}
+    let airtag = document.getElementById('airtag');
+    if (e.detail.value > 0) {
+      airtag.style.setProperty('--opacity', 1 - e.detail.value);
+    }
+  });
+</script>
